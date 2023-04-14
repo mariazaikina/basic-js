@@ -17,10 +17,11 @@ function createDreamTeam(members) {
   if (Array.isArray(members) === false) {
     return false;
   }
-  let upperArr = members.map(member => member[0].toUpperCase());
-  let sortedArr = upperArr.sort().join();
-  let str = sortedArr.replace(/[\s.,]/g, '');
-  return str;
+  let sortedArr = members.filter(item => typeof item ==="string");
+  let whitedArr = sortedArr.map(member=>member.trim());
+  let firstArr = whitedArr.map(i => i[0]);
+  let str = firstArr.join('').toUpperCase();
+  return str.split('').sort().join('');
 }
 
 module.exports = {
